@@ -1,0 +1,230 @@
+/**
+*General css of the application. Body and shopping cart.
+**/
+
+@mixin transition($delay) {
+	-webkit-transition:$delay;
+    -moz-transition:$delay;
+    -o-transition:$delay;
+    -ms-transition:$delay;
+    transition:$delay;
+}
+
+body {
+  background-color: #ffffff;
+  font: 300 1.25em/1.4 "Lato", sans-serif;
+  color: #686868;
+}
+
+h1{
+  font-weight: bold;
+  margin-top: .8em;
+  margin-bottom: .8em;
+  font-size:1.2em;
+  text-align:center;
+}
+
+h2{
+  font-weight: bold;
+  padding: 0 0.1875rem;
+  margin-top: .8em;
+  margin-bottom: .8em;
+  margin-left: -0.1875rem;
+  color:#686868;
+  font-size:1.2em;
+}
+
+.main-tab{
+	width:80%;
+	margin: 0 auto;	
+}
+
+legend {
+  background-color: #ecf0f1 !important;
+}
+
+/**
+* login form 
+**/
+.auto_hide {
+	@include transition(.7s);
+
+	opacity:0;
+	clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+fieldset:hover .auto_hide {
+    opacity:1;
+    height: auto;
+}
+
+/**
+* choice buttons 
+**/
+.exclusive_choice_btn {
+	padding: .1em;   
+	margin-top: 1rem;
+	margin-left: -.1rem;
+}
+.exclusive_choice_btn input[type=radio] {
+   display: none;
+}
+
+.exclusive_choice_btn input[type=checkbox] {
+   display: none;
+}
+
+.exclusive_choice_btn label {
+	@extend button;
+}
+
+.exclusive_choice_btn input:checked + label {
+	@extend button:hover;
+	border: inset 1px #e7e7e7;   
+}
+
+/**
+ * shopping-cart;
+ */
+.shopping-cart {
+  width: 80%;
+  margin: 0 auto;
+}
+.shopping-cart--list-item {
+  border: 1px solid #bdc3c7;
+  margin-bottom: .8rem;
+  height: 10rem;
+  overflow: hidden;
+}
+.shopping-cart--list-item:hover,
+.shopping-cart--list-item:hover * {
+  border-color: #3498db;
+}
+.shopping-cart--list-item > .columns {
+    height: 100%; 
+}
+
+/**
+ * product-image;
+ */
+ 
+.product-image {
+	min-width:10rem;
+	min-height: 10rem;
+	margin-left:-1rem;
+}
+
+/**
+ * product-info;
+ */
+.product-info {
+  width: 70%;
+  padding: .5rem;
+}
+.product-name {
+  font: 300 1.4em/1 "Lato", sans-serif;
+  letter-spacing: -.025em;
+  margin: .5 0 .125em;
+}
+.price {
+  line-height: 1;
+  text-align: right;
+}
+.product-single-price {
+  margin-top: -1rem;
+  font-size: 1.4em;
+}
+
+/**
+ * product-modifiers;
+ */
+.product-modifiers {
+  border-left: 1px solid #bdc3c7;
+}
+.product-subtract,
+.product-subtract.disabled,
+.product-plus,
+.product-qty {
+  width: 100%;
+  background-color: transparent;
+  color: #686868;
+}
+.product-qty {
+  text-align: center;
+  padding: .35em 0em;
+}
+.product-remove {
+  margin-top: 1.15rem;
+  margin-bottom: .55rem;
+  width: 100%;
+  visibility: hidden;
+}
+.product-modifiers:hover .product-remove {
+  visibility: visible;
+}
+.product-remove:before {
+  margin-right: .5em;
+}
+.product-total-price {
+  border-top: 1px solid #bdc3c7;
+  color: #95a5a6;
+  font-size: 1.15em;
+  padding: .5rem;
+  margin-right: -.35em;
+  margin-left: -.35em;
+}
+.shopping-cart--list-item:hover .product-total-price {
+  background-color: #3498db;
+  color: #ecf0f1;
+}
+
+/**
+ * cart-totals;
+ */
+.cart-totals {
+  border-top: 1px solid #bdc3c7;
+  margin-bottom: 3rem;
+}
+.cart-totals .columns {
+  padding: .5rem;
+  line-height: 1.2;
+}
+.cart-totals .columns:not(:first-of-type):not(:last-of-type) {
+  border-left: 1px solid #bdc3c7;
+}
+.cart-totals .columns:first-of-type {
+  padding-left: 0;
+}
+.cart-totals-key {
+  font-size: .8em;
+  color: #bdc3c7;
+}
+.cart-totals .columns:hover .cart-totals-value,
+.cart-totals .columns:hover .cart-totals-key {
+  color: #333;
+}
+.cart-totals-value {
+  font-size: 1.3em;
+}
+.total{
+  border-right: 1px solid #bdc3c7;
+}
+.taxes {
+  width: 19.984013%;
+  padding: .7rem;
+  line-height: 1.2;
+  border-top: 1px solid #bdc3c7;
+  font-size: .6em;
+}
+
+.panel-payment{
+	width:80%;
+	margin: 0 auto;	
+}
+
+.panel-payment-card{
+	width:65%;
+}
+

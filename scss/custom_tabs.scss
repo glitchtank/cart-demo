@@ -1,0 +1,153 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+//Modified to handle background color, rounded corners and border.
+
+@import "foundation/components/global";
+@import "foundation/components/grid";
+
+//
+// @variables
+//
+
+$include-html-tabs-classes: $include-html-classes !default;
+
+$tabs-navigation-padding: rem-calc(16) !default;
+$tabs-navigation-bg-color: $iron !default;
+$tabs-navigation-active-bg-color: $light-gray !default;
+$tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%) !default;
+$tabs-navigation-font-color: $jet !default;
+$tabs-navigation-active-font-color: $tabs-navigation-font-color !default;
+$tabs-navigation-font-size: rem-calc(16) !default;
+$tabs-navigation-font-family: $body-font-family !default;
+
+$tabs-content-margin-bottom: rem-calc(24) !default;
+$tabs-content-padding: ($column-gutter/2) !default;
+$tabs-content-bg-color: $light-gray !default;
+
+$tabs-vertical-navigation-margin-bottom: 1.25rem !default;
+
+@include exports("tab") {
+  @if $include-html-tabs-classes {
+    .tabs {
+      @include clearfix;
+      margin-bottom: 0 !important;
+      margin-left: 0;
+      dd, .tab-title {
+        position: relative;
+        margin-bottom: 0 !important;
+		margin-right: .5rem;
+        list-style: none;
+        float: $default-float;
+        > a {
+          outline: none;
+          display: block;
+          background: {
+			color: $tabs-navigation-bg-color;
+          }
+          color: $tabs-navigation-font-color;
+          padding: $tabs-navigation-padding $tabs-navigation-padding * 2;
+          font-family: $tabs-navigation-font-family;
+          font-size: $tabs-navigation-font-size;
+		  border-top: 1px solid $light-gray;
+		  border-right: 1px solid $light-gray;
+		  border-left: 1px solid $light-gray;
+		  border-top-left-radius: 4px;
+		  border-top-right-radius: 4px;
+          &:hover {
+            background: {
+              color: $tabs-navigation-hover-bg-color;
+            }
+          }
+        }
+        &.active a {
+          background: {
+            color: $tabs-navigation-active-bg-color;
+          }
+          color:$tabs-navigation-active-font-color;
+		  border-top: 1px solid $primary-color;
+		  border-right: 1px solid $primary-color;
+		  border-left: 1px solid $primary-color;
+		  &:after {
+		    border: 1px solid $light-gray;
+		    position: absolute;
+			bottom: -2px; 
+			left: 1px;
+		    width: 99%;
+		    content: " ";
+		}
+          }
+      }
+      &.radius {
+        dd:first-child, .tab:first-child {
+          a { @include side-radius($default-float, $global-radius); }
+        }
+        dd:last-child, .tab:last-child {
+          a { @include side-radius($opposite-direction, $global-radius); }
+        }
+      }
+      &.vertical {
+        dd, .tab-title {
+          position: inherit;
+          float: none;
+          display: block;
+          top: auto;
+        }
+      }
+    }
+
+    .tabs-content {
+      @include clearfix;
+      margin-bottom: $tabs-content-margin-bottom;
+      width: 100%;		 
+	  border-top: 1px solid $primary-color;
+	  border-bottom: 1px solid $primary-color;
+	  border-right: 1px solid $primary-color;
+	  border-left: 1px solid $primary-color;
+      > .content {
+        display: none;
+        float: $default-float;
+        padding: $tabs-content-padding 0;
+        width: 100%;
+        &.active { 
+			display: block; 
+			float: none; 
+			background: {
+				color: $tabs-content-bg-color;
+			  }			
+		}
+        &.contained { padding: $tabs-content-padding; }
+      }
+      &.vertical {
+        display: block;
+        > .content { padding: 0 $tabs-content-padding; }
+      }
+    }
+    @media #{$medium-up} {
+      .tabs {
+        &.vertical {
+          width: 20%;
+          max-width: 20%;
+          float: $default-float;
+          margin: 0 0 $tabs-vertical-navigation-margin-bottom;
+        }
+      }
+      .tabs-content {
+        &.vertical {
+          width: 80%;
+          max-width: 80%;
+          float: $default-float;
+          margin-#{$default-float}: -1px;
+          padding-#{$default-float}: 1rem;
+        }
+      }
+    }
+    .no-js {
+      .tabs-content > .content {
+        display: block;
+        float: none;
+      }
+    }
+  }
+}
